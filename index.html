@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>todo list</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+</head>
+<body>
+    <div class="mobile">
+        <div class="top"></div>
+        <div class="media">
+          <div id="time"></div>
+          <div class="icon">
+            <img src="imgs/wifi.png" width="15" alt="phone">
+            <img src="imgs/songdt3.png" width="13" alt="phone">
+            <img src="imgs/battery-icon-png-29.jpg" width="18" style="margin-top: 3px;" alt="phone">
+          </div>
+        </div>
+        <div class="content"> 
+            <div class="app"> 
+                <div class="title">
+                    <h3><span>Todo</span>List</h3>
+                </div>
+                <div class="todo-inner">
+                    <div class="form-todo">
+                        <div class="cold">
+                          <input type="text" placeholder="Enter your task" id="addtaskinput" />
+                          <input type="hidden" id="saveindex">
+                        </div>
+                        <button type="button" id="addtaskbtn">
+                          Add Task
+                        </button>
+                        <button type="button" id="savetaskbtn" style="display: none;">
+                          Save Task
+                        </button>
+                        <button type="button" id="deleteallbtn">
+                          Delete All
+                        </button>
+                      </div>
+                      <div class="to-do-output">
+                        <table  id="addedtasklist">
+                          
+                        </table>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom"></div>
+    </div>
+    <script src='js/main.js'></script>
+</body>
+</html>
