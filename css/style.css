@@ -63,7 +63,7 @@ body{
 }
 #time{
     margin-top: 2px;
-    color: grey;
+    color: rgb(77, 75, 75);
     font-size: 12px;
 }
 .icon{
@@ -103,7 +103,7 @@ body{
     outline: none;
     border: 0;
 }
-#addtaskbtn {
+#addtaskbtn,#savetaskbtn {
     width: 100%;
     margin-top: 20px;
     margin-bottom: 5px;

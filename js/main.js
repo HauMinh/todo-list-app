@@ -1,3 +1,4 @@
+//create and show tasks
 showtask();
 var addtaskinput = document.getElementById("addtaskinput");
 var addtaskbtn = document.getElementById("addtaskbtn");
@@ -5,7 +6,7 @@ var addtaskbtn = document.getElementById("addtaskbtn");
 addtaskbtn.addEventListener("click", function(){
     addtaskinputval = addtaskinput.value;
     if(addtaskinputval.trim()!=0){
-        let webtask = localStorage.getItem("localtask");
+        var webtask = localStorage.getItem("localtask");
         if(webtask == null){
             taskObj = [];
         }
@@ -49,22 +50,24 @@ function showtask(){
     addedtasklist.innerHTML = html;
 }
 
-// deleteitem
+
+// ******************************************************************************
+// delete task
 function deleteitem(index){
-    let webtask = localStorage.getItem("localtask");
-    let taskObj = JSON.parse(webtask);
+    var webtask = localStorage.getItem("localtask");
+    var taskObj = JSON.parse(webtask);
     taskObj.splice(index, 1);
     localStorage.setItem("localtask", JSON.stringify(taskObj));
     showtask();
 }
 
-// deleteall
-let deleteallbtn = document.getElementById("deleteallbtn");
+// delete all task
+var deleteallbtn = document.getElementById("deleteallbtn");
 deleteallbtn.addEventListener("click", function(){
-    let savetaskbtn = document.getElementById("savetaskbtn");
-    let addtaskbtn = document.getElementById("addtaskbtn");
-    let webtask = localStorage.getItem("localtask");
-    let taskObj = JSON.parse(webtask);
+    var savetaskbtn = document.getElementById("savetaskbtn");
+    var addtaskbtn = document.getElementById("addtaskbtn");
+    var webtask = localStorage.getItem("localtask");
+    var taskObj = JSON.parse(webtask);
     if(webtask == null){
         taskObj = [];
     }
@@ -78,7 +81,51 @@ deleteallbtn.addEventListener("click", function(){
     showtask();
 })
 
-// đồng hồ
+
+// ******************************************************************************
+// edit task
+function edittask(index){
+    var saveindex = document.getElementById("saveindex");
+    var addtaskbtn = document.getElementById("addtaskbtn");
+    var savetaskbtn = document.getElementById("savetaskbtn");
+    saveindex.value = index;
+    var webtask = localStorage.getItem("localtask");
+    var taskObj = JSON.parse(webtask); 
+    
+    addtaskinput.value = taskObj[index]['task_name'];
+    addtaskbtn.style.display="none";
+    savetaskbtn.style.display="block";
+}
+// save task
+let savetaskbtn = document.getElementById("savetaskbtn");
+savetaskbtn.addEventListener("click", function(){
+    var addtaskbtn = document.getElementById("addtaskbtn");
+    var webtask = localStorage.getItem("localtask");
+    var taskObj = JSON.parse(webtask); 
+    var saveindex = document.getElementById("saveindex").value;
+    
+    for (keys in taskObj[saveindex]) {
+        if(keys == 'task_name'){
+            taskObj[saveindex].task_name = addtaskinput.value;
+        }
+      }
+
+    savetaskbtn.style.display="none";
+    addtaskbtn.style.display="block";
+    localStorage.setItem("localtask", JSON.stringify(taskObj));
+    addtaskinput.value='';
+    showtask();
+})
+
+
+// ******************************************************************************
+// complete task
+
+
+
+
+// ******************************************************************************
+// time 
 function dongho(){
     var today = new Date(); //lấy ngày giờ hiện tại
     var gio = today.getHours(); //lấy giờ hiện tại
